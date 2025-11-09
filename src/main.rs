@@ -26,7 +26,13 @@ fn main() {
             .expect("Failed to get the user input :(");
 
         // parse the input as int
-        let guess: u32 = guess.trim().parse().expect("pls enter number");
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => {
+                println!("Invalid input, please enter a number");
+                continue;
+            }
+        };
 
         //passing the refrence to the cmp function
         // match is like switch case bit not fully like them
